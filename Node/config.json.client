@@ -1,0 +1,8 @@
+{
+    "prefix":"!",
+    "botToken":"",
+    "inviteTokens": [{"role":"","token":"","msg":""}],
+    "inductorRole": "",
+    "pointsClearRoles":"Discord Administrator", 
+    "inviteLogChannel":""
+}
