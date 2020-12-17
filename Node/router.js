@@ -1,8 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-var monitoring = require('./prtg/prtg.js')
-monitoring.prtg()
+const monitoring = require('./prtg/prtg.js');
+const googleCal = require('./automated-actions/GoogleCal.js');
+googleCal.createChannelsForEvents(client);
+monitoring.prtg();
 client.login(config.botToken);
 
 client.on('message', message => {
