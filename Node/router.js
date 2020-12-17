@@ -13,9 +13,7 @@ client.on('message', message => {
         require("./endpoints/ping.js").ping(message)
     }
     else {
-
         return
-
     }
 
 });
