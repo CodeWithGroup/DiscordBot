@@ -1,4 +1,4 @@
-function eventChannels(client,config) {
+function eventChannels(client, config) {
     let { google } = require('googleapis');
     let privatekey = require("./private-key.json");
     // configure a JWT auth client
@@ -36,11 +36,21 @@ function eventChannels(client,config) {
             response.data.items.forEach(event => {
                 console.log(event.summary);
 
-                var server = client.guilds.cache.get("754033804338921583");
+                var server = client.guilds.cache.get(config.server);
 
+                //create the text channel
                 server.channels.create(event.summary, "text")
                     .then(channel => {
-                        let category = server.channels.cache.get("754035282147409930");
+                        let category = server.channels.cache.get(config.eventCategory.today);
+
+                        if (!category) throw new Error("Category channel does not exist");
+                        channel.setParent(category.id);
+                    }).catch(console.error);
+
+                //create the voice channel
+                server.channels.create(event.summary, {type:"voice"})
+                    .then(channel => {
+                        let category = server.channels.cache.get(config.eventCategory.today);
 
                         if (!category) throw new Error("Category channel does not exist");
                         channel.setParent(category.id);

@@ -2,5 +2,7 @@
     "prefix":"!",
     "botToken":"",
     "inviteTokens": [{"role":"","token":"","msg":""}],
-    "inviteLogChannel":""
+    "inviteLogChannel":"",
+    "eventCategory":{"today":"","yesterday":""},
+    "server":""
 }

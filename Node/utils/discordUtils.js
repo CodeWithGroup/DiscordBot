@@ -1,5 +1,5 @@
 module.exports = {
-    getUserFromMention: (client,mention) => {
+    getUserFromMention: (client, mention) => {
         if (!mention) return;
 
         if (mention.startsWith('<@') && mention.endsWith('>')) {
@@ -11,5 +11,14 @@ module.exports = {
 
             return client.users.cache.get(mention);
         }
-    }
+    },
+    clearOld, moveYesterday
+}
+
+function clearOld(client, config) {
+    
+}
+
+function moveYesterday(client, config) {
+
 }

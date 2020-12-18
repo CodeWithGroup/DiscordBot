@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const config = require('./config.json');
 const calendar = require('./automation/googleCal.js');
 const monitoring = require('./prtg/prtg.js')
+var schedule = require('node-schedule');
 
 monitoring.prtg()
 client.login(config.botToken);
@@ -34,9 +35,12 @@ client.on('ready', () => {
     wait(1000);
     console.log("Ready!")
 
-calendar.eventChannels(client,config);
 
+    calendar.eventChannels(client, config);
 
+    //start the calendar job
+    schedule.scheduleJob('0 0 * * *', () => {
+    }) // run everyday at midnight
 
     // Load all invites for all guilds and save them to the cache.
     client.guilds.cache.forEach(g => {
