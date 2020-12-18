@@ -1,10 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-var monitoring = require('./prtg/prtg.js')
+const calendar = require('./automation/googleCal.js');
+const monitoring = require('./prtg/prtg.js')
+
 monitoring.prtg()
 client.login(config.botToken);
-googleCal.createChannelsForEvents();
+
+//create a test channel
+
 
 client.on('message', message => {
 
@@ -29,6 +33,11 @@ client.on('ready', () => {
     // "ready" isn't really ready. We need to wait a spell.
     wait(1000);
     console.log("Ready!")
+
+calendar.eventChannels(client,config);
+
+
+
     // Load all invites for all guilds and save them to the cache.
     client.guilds.cache.forEach(g => {
         g.fetchInvites().then(guildInvites => {
