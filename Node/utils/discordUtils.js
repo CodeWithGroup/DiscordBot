@@ -16,7 +16,7 @@ module.exports = {
 }
 
 function clearOld(client, config) {
-    
+
 }
 
 function moveYesterday(client, config) {

@@ -4,6 +4,7 @@ const config = require('./config.json');
 const calendar = require('./automation/googleCal.js');
 const monitoring = require('./prtg/prtg.js')
 var schedule = require('node-schedule');
+const discordUtils = require('./utils/discordUtils');
 
 monitoring.prtg()
 client.login(config.botToken);
@@ -35,8 +36,10 @@ client.on('ready', () => {
     wait(1000);
     console.log("Ready!")
 
-
-    calendar.eventChannels(client, config);
+    //move yesterday's events
+discordUtils.moveYesterday(client,config);
+    //create the channels for today
+    //calendar.eventChannels(client, config);
 
     //start the calendar job
     schedule.scheduleJob('0 0 * * *', () => {
