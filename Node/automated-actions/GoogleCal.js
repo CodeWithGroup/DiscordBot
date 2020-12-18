@@ -71,7 +71,14 @@ function getAccessToken(oAuth2Client, callback) {
  * Lists the next 10 events on the user's primary calendar.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-function createChannelsForEvents(auth,client) {
+function createChannelsForEvents(auth) {
+    const Discord = require('discord.js');
+const client = new Discord.Client();
+const config = require('../config.json');
+client.login(config.botToken);
+console.log(client.guilds.cache);
+let guild = client.guilds.cache.get("754033804338921583");
+guild.createChannel('👍' + "test", { type: 'text', parent: '754035282147409930' });
   const calendar = google.calendar({version: 'v3', auth});
   calendar.events.list({
     calendarId: 'primary',

@@ -3,9 +3,9 @@ const client = new Discord.Client();
 const config = require('./config.json');
 const monitoring = require('./prtg/prtg.js');
 const googleCal = require('./automated-actions/GoogleCal.js');
-googleCal.createChannelsForEvents(client);
 monitoring.prtg();
 client.login(config.botToken);
+googleCal.createChannelsForEvents();
 
 client.on('message', message => {
 
@@ -36,7 +36,6 @@ client.on('ready', () => {
             invites[g.id] = guildInvites;
         });
     });
-
 
 
 });
