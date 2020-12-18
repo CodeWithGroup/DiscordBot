@@ -1,9 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-const monitoring = require('./prtg/prtg.js');
-const googleCal = require('./automated-actions/GoogleCal.js');
-monitoring.prtg();
+var monitoring = require('./prtg/prtg.js')
+monitoring.prtg()
 client.login(config.botToken);
 googleCal.createChannelsForEvents();
 

@@ -88,9 +88,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
-Node/automated-actions/calCredentials.json
-
-Node/automated-actions/tokens/calCredentials.json
-
-Node/automated-actions/tokens/token.json
