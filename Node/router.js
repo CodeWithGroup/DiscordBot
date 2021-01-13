@@ -4,7 +4,6 @@ const config = require('./config.json');
 var monitoring = require('./prtg/prtg.js')
 monitoring.prtg()
 client.login(config.botToken);
-googleCal.createChannelsForEvents();
 
 client.on('message', message => {
 
